@@ -60,6 +60,7 @@ class zebpay(object):
 
 class poloniex(object):
     def price_data(self):
+        price = {}
         ret = requests.get('https://poloniex.com/public?command=returnTicker', headers=header, timeout=30)
 
         data = json.loads(ret.text)['USDT_BTC']
