@@ -62,9 +62,11 @@ class poloniex(object):
     def price_data(self):
         ret = requests.get('https://poloniex.com/public?command=returnTicker', headers=header, timeout=30)
 
-        data = json.loads(ret.text)
-        print('poloniex')
-        print(data)
+        data = json.loads(ret.text)['USDT_BTC']
+
+        price['buy'], price['sell'], price['spot'], price['currency'], price['volume'] = data['highestBid'], \
+                                                data['lowestAsk'], data['last'], 'USD', data['baseVolume']
+
         return data
 #
 #     # def buy_order(self):
