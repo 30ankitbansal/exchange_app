@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %}</title>
+<link rel = "stylesheet"  type = "text/css" href = "{% static 'bootstrap.min.css' %}" />
+<script src="{% static 'jquery-2.1.1.js' %}"></script>
+<style>
+
+.cd-header {position: relative;height: 80px;background-color: #331d35;color:white;text-align:center;padding-top:15px;}
+.selectList{margin-top:10px;color:#6C7A89;font: italic bold 20px/30px Georgia, serif;
+}
+</style>
+</head>
+<body>
+	<div id="content">
+        {% block content %}
+        {% endblock %}
+  </div>
+<!-- <footer>
+  <p>Developed By : Abhishek Soni & Divya Agrawal</p>
+</footer> -->
+</body>
+
+</html>
