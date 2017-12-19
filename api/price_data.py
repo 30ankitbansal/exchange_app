@@ -1,6 +1,6 @@
-import urllib.request as request
+# import urllib.request as request
 
-# import requests
+import requests
 import json
 
 header = {'Content-Type': 'application/json',
@@ -13,8 +13,8 @@ class bittrex(object):
     def price_data(self):
         price = {}
 
-        ret = request.urlopen(request.Request('https://bittrex.com/api/v1.1/public/getticker?market=usdt-btc'))
-        data = json.loads(ret.read().decode('utf-8'))['result']
+        ret = requests.get('https://bittrex.com/api/v1.1/public/getticker?market=usdt-btc')
+        data = json.loads(ret.text)['result']
 
         price['buy'], price['sell'], price['spot'], price['currency'] = data['Bid'], data['Ask'], data['Last'], 'USD'
 
@@ -30,7 +30,7 @@ class bittrex(object):
 #         ret = request.urlopen(
 #             request.Request('https://bittrex.com/Api/v2.0/pub/market/GetTicks?marketName=' + ccy +
 #                             '&tickInterval=day&_=' + str(timestamp)))
-#         data = json.loads(ret.read().decode('utf-8'))
+#         data = json.loads(ret.text)
 #         return data
 #
 #     # def buy_order(self):
@@ -43,14 +43,14 @@ class unocoin(object):
     def price_data(self):
         price = {}
 
-        ret = request.urlopen(request.Request('https://www.unocoin.com/trade?all'))
-        print(type(ret))
+        ret = requests.get('https://www.unocoin.com/trade?all')
+        # print(type(ret))
         # ret = requests.get('https://www.unocoin.com/trade?all', headers=header).text
-        data = json.loads(ret.read().decode('utf-8'))
-        print(data)
+        data = json.loads(ret.text)
+        # print(data)
 
         price['buy'], price['sell'], price['spot'], price['currency'] = data['buy'], data['sell'], data['avg'], 'USD'
-        print(price['buy'])
+        # print(price['buy'])
         return price
 
     # def buy_order(self):
@@ -62,7 +62,7 @@ class unocoin(object):
 #         ret = request.urlopen(
 #             request.Request('https://bittrex.com/Api/v2.0/pub/market/GetTicks?marketName=' + ccy +
 #                             '&tickInterval=day&_=' + str(timestamp)))
-#         data = json.loads(ret.read().decode('utf-8'))
+#         data = json.loads(ret.text)
 #         return data
 #
 #     # def buy_order(self):
@@ -78,9 +78,9 @@ class c_cex(object):
     def price_data(self):
         price = {}
 
-        ret = request.urlopen(request.Request('https://c-cex.com/t/btc-usd.json', headers={'User-Agent': 'Mozilla/5.0'}))
+        ret = requests.get('https://c-cex.com/t/btc-usd.json', headers={'User-Agent': 'Mozilla/5.0'})
 
-        data = json.loads(ret.read().decode('utf-8'))['ticker']           # ['ticker']
+        data = json.loads(ret.text)['ticker']           # ['ticker']
         # print(data)
         price['buy'], price['sell'], price['spot'], price['currency'] = data['buy'], data['sell'], data['lastprice'], 'USD'
 
@@ -93,10 +93,10 @@ class c_cex(object):
 
 class bitpay(object):
     def price_data(self):
-        ret = request.urlopen(request.Request('https://bitpay.com/bitcoin-exchange_arbitrage-rates')).read()
-        print(type(ret))
-        data = json.loads(ret).decode('utf-8')
-        print(data)
+        ret = requests.get('https://bitpay.com/bitcoin-exchange_arbitrage-rates')
+        # print(type(ret))
+        data = json.loads(ret.text)
+        # print(data)
         return data
 
     # def buy_order(self):
@@ -108,14 +108,14 @@ class coinbase(object):
     def price_data(self):
         price = {}
 
-        ret = request.urlopen(request.Request('https://api.coinbase.com/v2/prices/BTC-USD/spot'))
-        price['spot'] = json.loads(ret.read().decode('utf-8'))['data']['amount']
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/spot')
+        price['spot'] = json.loads(ret.text)['data']['amount']
 
-        ret = request.urlopen(request.Request('https://api.coinbase.com/v2/prices/BTC-USD/buy'))
-        price['buy'] = json.loads(ret.read().decode('utf-8'))['data']['amount']
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/buy')
+        price['buy'] = json.loads(ret.text)['data']['amount']
 
-        ret = request.urlopen(request.Request('https://api.coinbase.com/v2/prices/BTC-USD/sell'))
-        price['sell'] = json.loads(ret.read().decode('utf-8'))['data']['amount']
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/sell')
+        price['sell'] = json.loads(ret.text)['data']['amount']
 
         price['currency'] = 'USD'
         return price
@@ -123,8 +123,6 @@ class coinbase(object):
     # def buy_order(self):
 
     # def sell_order(self):
-
-
 
 
 def show_data():
