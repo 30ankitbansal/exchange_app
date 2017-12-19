@@ -144,8 +144,8 @@ def show_data():
     bpay = bitpay()
     print(bpay.price_data())
 
-    poloniex =poloniex()
-    print(poloniex.price_data())
+    polonx =poloniex()
+    print(polonx.price_data())
 
     zpay = zebpay()
     print(zpay.price_data())
