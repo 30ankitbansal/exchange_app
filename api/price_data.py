@@ -13,31 +13,35 @@ class bittrex(object):
     def price_data(self):
         price = {}
 
-        ret = requests.get('https://bittrex.com/api/v1.1/public/getticker?market=usdt-btc')
+        ret = requests.get('https://bittrex.com/Api/v2.0/pub/market/GetMarketSummary?marketName=usdt-btc')
         data = json.loads(ret.text)['result']
 
-        price['buy'], price['sell'], price['spot'], price['currency'] = data['Bid'], data['Ask'], data['Last'], 'USD'
+        price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'], price['volume'] = \
+        data['Bid'], data['Ask'], data['Last'], 'USD', \
+        data['High'], data['Low'], data['Volume']
 
         return price
 
-    # # def buy_order(self):
+        # # def buy_order(self):
 
-    # # def sell_order(self):
-        
+        # # def sell_order(self):
+
 
 class zebpay(object):
     def price_data(self):
         price = {}
-        ret = requests.get('https://www.zebapi.com/api/v1/market/ticker/btc/inr')
+        ret = requests.get('https://www.zebapi.com/api/v1/market/ticker/btc/usd')
         data = json.loads(ret.text)
 
-        price['buy'], price['sell'], price['spot'], price['currency'], price['volume'] = data['buy'], data['sell'], data['market'], 'INR', data['volume']
+        price['buy'], price['sell'], price['spot'], price['currency'], price['volume'] = data['buy'], data['sell'], \
+                                                                                         data['market'], 'USD', data[
+                                                                                             'volume']
 
-        return data
+        return price
 
-    # def buy_order(self):
+        # def buy_order(self):
 
-    # def sell_order(self):
+        # def sell_order(self):
 
 
 # class unocoin(object):
@@ -66,9 +70,13 @@ class poloniex(object):
         data = json.loads(ret.text)['USDT_BTC']
 
         price['buy'], price['sell'], price['spot'], price['currency'], price['volume'] = data['highestBid'], \
-                                                data['lowestAsk'], data['last'], 'USD', data['baseVolume']
+                                                                                         data['lowestAsk'], data[
+                                                                                             'last'], 'USD', data[
+                                                                                             'baseVolume']
 
-        return data
+        return price
+
+
 #
 #     # def buy_order(self):
 #
@@ -85,73 +93,62 @@ class c_cex(object):
 
         ret = requests.get('https://c-cex.com/t/btc-usd.json', headers={'User-Agent': 'Mozilla/5.0'})
 
-        data = json.loads(ret.text)['ticker']           # ['ticker']
+        data = json.loads(ret.text)['ticker']  # ['ticker']
         # print(data)
-        price['buy'], price['sell'], price['spot'], price['currency'] = data['buy'], data['sell'], data['lastprice'], 'INR'
+        price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'] = data['buy'], data['sell'], data['lastprice'], \
+                                                                        'USD', data['high'], data['low'], data['']
 
         return price
 
-    # def buy_order(self):
+        # def buy_order(self):
 
-    # def sell_order(self):
+        # def sell_order(self):
 
 
 class bitpay(object):
     def price_data(self):
         price = {}
-        ret = requests.get('https://bitpay.com/api/rates/btc/inr')
+        ret = requests.get('https://bitpay.com/api/rates/btc/usd')
         # print(type(ret))
         data = json.loads(ret.text)
-        price['spot'], price['currency'] = data['rate'], 'INR'
-        return data
+        price['spot'], price['currency'] = data['rate'], 'USD'
 
-    # def buy_order(self):
+        return price
 
-    # def sell_order(self):
+        # def buy_order(self):
+
+        # def sell_order(self):
 
 
 class coinbase(object):
     def price_data(self):
         price = {}
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-INR/spot')
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/spot')
         price['spot'] = json.loads(ret.text)['data']['amount']
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-INR/buy')
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/buy')
         price['buy'] = json.loads(ret.text)['data']['amount']
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-INR/sell')
+        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/sell')
         price['sell'] = json.loads(ret.text)['data']['amount']
 
-        price['currency'] = 'INR'
+        price['currency'] = 'USD'
         return price
 
-    # def buy_order(self):
+        # def buy_order(self):
 
-    # def sell_order(self):
+        # def sell_order(self):
 
 
 def show_data():
-    cbase = coinbase()
-    print(cbase.price_data())
-    #
-    btrex = bittrex()
-    print(btrex.price_data())
-
-    # ucoin = unocoin()
-    # print(ucoin.price_data())
-
-    cex = c_cex()
-    print(cex.price_data())
-
-    bpay = bitpay()
-    print(bpay.price_data())
-
-    polonx =poloniex()
-    print(polonx.price_data())
-
-    zpay = zebpay()
-    print(zpay.price_data())
+    dict_data = {'bittrex': bittrex().price_data(),
+                 'ZebPay': zebpay().price_data(),
+                 'c_cex': c_cex().price_data(),
+                 'bitpay': bitpay().price_data(),
+                 'coinbase': coinbase().price_data()
+                 }
+    return dict_data
 
 
 show_data()

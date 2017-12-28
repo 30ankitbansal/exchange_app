@@ -4,187 +4,69 @@
 
 <header class="cd-header">
   <h2>Exchange Data</h2>
+   <style>
+       table, th, td {
+    border: 1px solid black;
+    width: 800px;
+    height: 50px;
+}
+   </style>
 </header>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-3">
+        <table>
+            <tr>
+                <th>Exchanges</th>
+                <th>Buy Price</th>
+                <th>Sell Price</th>
+                <th>Price</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Volume</th>
+            </tr>
+            <tr>
+                <th>Bittrex</th>
+                <td>{{bittrex.buy}}</td>
+                <td>{{bittrex.sell}}</td>
+                <td>{{bittrex.spot}}</td>
+                <td>{{bittrex.high}}</td>
+                <td>{{bittrex.low}}</td>
+                <td>{{bittrex.volume}}</td>
+            </tr>
+            <tr>
+                <th>Zebpay</th>
+                <td>{{ZebPay.buy}}</td>
+                <td>{{ZebPay.sell}}</td>
+                <td>{{ZebPay.spot}}</td>
+                <td>{{ZebPay.high}}</td>
+                <td>{{ZebPay.low}}</td>
+                <td>{{ZebPay.volume}}</td>
+            </tr>
+            <tr>
+                <th>C_Cex</th>
+                <td>{{c_cex.buy}}</td>
+                <td>{{c_cex.sell}}</td>
+                <td>{{c_cex.spot}}</td>
+            </tr>
+            <tr>
+                <th>BitPay</th>
+                <td>{{bitpay.buy}}</td>
+                <td>{{bitpay.sell}}</td>
+                <td>{{bitpay.spot}}</td>
+            </tr>
+            <tr>
+                <th>CoinBase</th>
+                <td>{{coinbase.buy}}</td>
+                <td>{{coinbase.sell}}</td>
+                <td>{{coinbase.spot}}</td>
+            </tr>
 
-        <div class="checkbox" id="filter">
-
-            <label><input id="selectAll" type="checkbox" > Select All</label>
-
-
-
-              <div id="bittrexButton" class="selectList"
-              onmouseover="this.style.color='blue';" onmouseout="this.style.color='#6C7A89';">Bittrex</div>
-                <div id="bittrexSelectList">
-                  {% for pair in bittrex_pair %}
-                  <label>
-	                   <input class="checkboxClass" type="checkbox"  value="{{pair}}"> {{pair}}
-	                  </label><br>
-                  {% endfor %}
-                </div>
-
-                <div id="bxthButton" class="selectList"
-                onmouseover="this.style.color='blue';" onmouseout="this.style.color='#6C7A89';">Bxth</div>
-                <div id="bxthSelectList">
-                  {% for pair in bxth_pair %}
-                  <label>
-	                   <input class="checkboxClass" type="checkbox"  value="{{pair}}"> {{pair}}
-	                </label><br>
-                  {% endfor %}
-                </div>
-
-                <div id="rocktradingButton" class="selectList"
-                  onmouseover="this.style.color='blue';" onmouseout="this.style.color='#6C7A89';">Rocktrading</div>
-                  <div id="rocktradingSelectList">
-                    {% for pair in rocktrading_pair %}
-                    <label>
-    	                 <input class="checkboxClass" type="checkbox"  value="{{pair}}"> {{pair}}
-    	               </label><br>
-                    {% endfor %}
-                  </div>
-
-                  <div id="hitbtcButton" class="selectList"
-                  onmouseover="this.style.color='blue';" onmouseout="this.style.color='#6C7A89';">Hitbtc</div>
-                  <div id="hitbtcSelectList">
-                    {% for pair in hitbtc_pair %}
-                    <label>
-  	                   <input class="checkboxClass" type="checkbox"  value="{{pair}}"> {{pair}}
-  	                </label><br>
-                    {% endfor %}
-                  </div>
-
-              <div id="krakenButton" class="selectList"
-                onmouseover="this.style.color='blue';" onmouseout="this.style.color='#6C7A89';">Kraken</div>
-                <div id="krakenSelectList">
-                  {% for pair in kraken_pair %}
-                  <label>
-	                   <input class="checkboxClass" type="checkbox"  value="{{pair}}"> {{pair}}
-	                </label><br>
-                  {% endfor %}
-                </div>
-
-              </div>
-            </div>
-
-  <div class="col-xs-12 col-md-3">
-	  <table class="table table-striped" id="tabela1">
-	    <thead>
-	      <tr id="thead">
-          <th>Exchange</th><th>Currency</th><th>Bid Qty</th><th>Bid</th><th>Ask</th><th>Ask Qty</th>
-	      </tr>
-	    </thead>
-      <tbody>
-
-
-        {% for currency,data in bittrex.items %}
-        <tr>
-          <td >Bittrex </td>
-          <td class="currencyy">{{currency}}</td>
-          <td >{{data.bid_qty}}</td>
-          <td >{{data.bid}}</td>
-          <td >{{data.ask}}</td>
-          <td >{{data.ask_qty}}</td>
-        </tr>
-        {% endfor %}
-
-        {% for currency,data in bxth.items %}
-        <tr>
-          <td >Bxth </td>
-          <td class="currencyy">{{currency}}</td>
-          <td >{{data.bid_qty}}%</td>
-          <td >{{data.bid}}</td>
-          <td >{{data.ask}}</td>
-          <td >{{data.ask_qty}}</td>
-        </tr>
-        {% endfor %}
-
-        {% for currency,data in rocktrading.items %}
-        <tr>
-          <td >Rocktrading </td>
-          <td class="currencyy">{{currency}}</td>
-          <td >{{data.bid_qty}}</td>
-          <td >{{data.bid}}</td>
-          <td >{{data.ask}}</td>
-          <td >{{data.ask_qty}}</td>
-        </tr>
-        {% endfor %}
-
-        {% for currency,data in hitbtc.items %}
-        <tr>
-          <td >Hitbtc </td>
-          <td class="currencyy">{{currency}}</td>
-          <td >{{data.bid_qty}}</td>
-          <td >{{data.bid}}</td>
-          <td >{{data.ask}}</td>
-          <td >{{data.ask_qty}}</td>
-        </tr>
-        {% endfor %}
-
-      {% for currency,data in kraken.items %}
-        <tr>
-          <td >Kraken </td>
-          <td class="currencyy">{{currency}}</td>
-          <td >{{data.bid_qty}}</td>
-          <td >{{data.bid}}</td>
-          <td >{{data.ask}}</td>
-          <td >{{data.ask_qty}}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-	  </table>
-</div>
-</div>
+        </table>
+    </div>
+  </div>
 </div>
 
-
-<script>
-  $(document).ready(function () {
-  $("#selectAll").prop('checked', true);
-  $(".checkboxClass").prop('checked', true);
- $("#hitbtcSelectList").hide();
- $("#rocktradingSelectList").hide();
- $("#bittrexSelectList").hide();
- $("#bxthSelectList").hide();
- $("#krakenSelectList").hide();
- $("input:checkbox").on("change", function () {
-     var a = $("input:checkbox:checked").map(function () {
-         return $(this).val()
-     }).get()
-     $("#tabela1 tr").hide();
-     var currencies = $(".currencyy").filter(function () {
-         var currencyy = $(this).text(),
-             index = $.inArray(currencyy, a);
-         return index >= 0
-     }).parent().show();
-     $("#thead").show();
- }).first().change();
-$("#thead").show();
-});
-$("#hitbtcButton").click(function(){
-    $("#hitbtcSelectList").toggle();
-});
-$("#rocktradingButton").click(function(){
-    $("#rocktradingSelectList").toggle();
-});
-$("#bittrexButton").click(function(){
-   $("#bittrexSelectList").toggle();
-});
-$("#bxthButton").click(function(){
-  $("#bxthSelectList").toggle();
-});
-$("#krakenButton").click(function(){
-  $("#krakenSelectList").toggle();
-});
-$("#selectAll").change(function() {
-   if(this.checked) {
-      $(".checkboxClass").prop('checked', true);
-   }else{
-      $(".checkboxClass").prop('checked', false);
-   }
-});
-</script>
 
 {% endblock %}

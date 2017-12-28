@@ -5,7 +5,7 @@ header = {'User-Agent': 'Mozilla/5.0'}
 
 
 def api_query():
-    ret = requests.get('https://bittrex.com/api/v1.1/public/getmarketsummaries', headers=header)
+    ret = requests.get('https://bittrex.com/api/v1.1/public/getticker?market=usdt-btc', headers=header)
     data = json.loads(ret.text)
     # print(data)
     d = {}
