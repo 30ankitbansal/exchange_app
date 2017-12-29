@@ -146,7 +146,7 @@ def show_data():
     dict_data = {'bittrex': bittrex().price_data(),
                  'ZebPay': zebpay().price_data(),
                  'c_cex': c_cex().price_data(),
-                 'Poloniex': Poloniex().price_data(),
+                 'Poloniex': poloniex().price_data(),
                  'bitpay': bitpay().price_data(),
                  'coinbase': coinbase().price_data()
                  }
