@@ -13,7 +13,7 @@ class bittrex(object):
     def price_data(self):
         price = {}
 
-        ret = requests.get('https://bittrex.com/Api/v2.0/pub/market/GetMarketSummary?marketName=usdt-btc')
+        ret = requests.get('https://bittrex.com/Api/v2.0/pub/market/GetMarketSummary?marketName=USDT-BTC')
         data = json.loads(ret.text)['result']
 
         price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'], price['volume'] = \
