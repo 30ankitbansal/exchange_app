@@ -70,7 +70,8 @@ class poloniex(object):
 
         data = json.loads(ret.text)['USDT_BTC']
 
-        price['buy'], price['sell'], price['spot'], price['currency'], price['volume'] = data['highestBid'], data['lowestAsk'], data['last'], 'USD', data['baseVolume']
+        price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'] = data['highestBid'],\
+                                            data['lowestAsk'], data['last'], 'USD', data['high24hr'], data['low24hr']
 
         return price
 
