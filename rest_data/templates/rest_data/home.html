@@ -1,4 +1,5 @@
 {% extends "rest_data/base.html" %}
+{% load humanize %}
 {% block title %}exchange data{% endblock %}
 {% block content %}
 
@@ -6,7 +7,7 @@
   <h2>Exchange Data</h2>
    <style>
        table, th, td {
-    border: 1px solid black;
+    border: 2px solid black;
     width: 800px;
     height: 50px;
 }
@@ -28,51 +29,54 @@
             </tr>
             <tr>
                 <th>Bittrex</th>
-                <td>{{bittrex.buy}}</td>
-                <td>{{bittrex.sell}}</td>
-                <td>{{bittrex.spot}}</td>
-                <td>{{bittrex.high}}</td>
-                <td>{{bittrex.low}}</td>
-                <td>{{bittrex.volume}}</td>
+                <td>{{bittrex.buy | floatformat:3|intcomma}}</td>
+                <td>{{bittrex.sell | floatformat:3|intcomma}}</td>
+                <td>{{bittrex.spot | floatformat:3|intcomma}}</td>
+                <td>{{bittrex.high | floatformat:3|intcomma}}</td>
+                <td>{{bittrex.low | floatformat:3|intcomma}}</td>
+                <td>{{bittrex.volume | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>Zebpay</th>
-                <td>{{ZebPay.buy}}</td>
-                <td>{{ZebPay.sell}}</td>
-                <td>{{ZebPay.spot}}</td>
-                <td>{{ZebPay.high}}</td>
-                <td>{{ZebPay.low}}</td>
-                <td>{{ZebPay.volume}}</td>
+                <td>{{ZebPay.buy | floatformat:3|intcomma}}</td>
+                <td>{{ZebPay.sell | floatformat:3|intcomma}}</td>
+                <td>{{ZebPay.spot | floatformat:3|intcomma}}</td>
+                <td>{{ZebPay.high | floatformat:3|intcomma}}</td>
+                <td>{{ZebPay.low | floatformat:3|intcomma}}</td>
+                <td>{{ZebPay.volume | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>Poloniex</th>
-                <td>{{Poloniex.buy}}</td>
-                <td>{{Poloniex.sell}}</td>
-                <td>{{Poloniex.spot}}</td>
-                <td>{{Poloniex.high}}</td>
-                <td>{{Poloniex.low}}</td>
-                <td>{{Poloniex.volume}}</td>
+                <td>{{Poloniex.buy | floatformat:3|intcomma}}</td>
+                <td>{{Poloniex.sell | floatformat:3|intcomma}}</td>
+                <td>{{Poloniex.spot | floatformat:3|intcomma}}</td>
+                <td>{{Poloniex.high | floatformat:3|intcomma}}</td>
+                <td>{{Poloniex.low | floatformat:3|intcomma}}</td>
+                <td>{{Poloniex.volume | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>C_Cex</th>
-                <td>{{c_cex.buy}}</td>
-                <td>{{c_cex.sell}}</td>
-                <td>{{c_cex.spot}}</td>
-                <td>{{c_cex.high}}</td>
-                <td>{{c_cex.low}}</td>
-                <td>{{c_cex.volume}}</td>
+                <td>{{c_cex.buy | floatformat:3|intcomma}}</td>
+                <td>{{c_cex.sell | floatformat:3|intcomma}}</td>
+                <td>{{c_cex.spot | floatformat:3|intcomma}}</td>
+                <td>{{c_cex.high | floatformat:3|intcomma}}</td>
+                <td>{{c_cex.low | floatformat:3|intcomma}}</td>
+                <td>{{c_cex.volume | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>BitPay</th>
-                <td>{{bitpay.spot}}</td>
-                <td>{{bitpay.spot}}</td>
-                <td>{{bitpay.spot}}</td>
+                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>CoinBase</th>
-                <td>{{coinbase.buy}}</td>
-                <td>{{coinbase.sell}}</td>
-                <td>{{coinbase.spot}}</td>
+                <td>{{coinbase.buy | floatformat:3|intcomma}}</td>
+                <td>{{coinbase.sell | floatformat:3|intcomma}}</td>
+                <td>{{coinbase.spot | floatformat:3|intcomma}}</td>
+                <td>{{coinbase.high | floatformat:3|intcomma}}</td>
+                <td>{{coinbase.low | floatformat:3|intcomma}}</td>
+                <td>{{coinbase.volume | floatformat:3|intcomma}}</td>
             </tr>
 
         </table>

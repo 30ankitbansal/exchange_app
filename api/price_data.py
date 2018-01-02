@@ -2,6 +2,7 @@
 
 import requests
 import json
+# from django.contrib.humanize.templatetags.humanize import intcomma
 
 header = {'Content-Type': 'application/json',
           'User-Agent': 'Mozilla/5.0'}
@@ -15,7 +16,7 @@ class bittrex(object):
 
         ret = requests.get('https://bittrex.com/Api/v2.0/pub/market/GetMarketSummary?marketName=USDT-BTC')
         data = json.loads(ret.text)['result']
-
+        print(data)
         price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'], price['volume'] = \
         data['Bid'], data['Ask'], data['Last'], 'USD', data['High'], data['Low'], data['Volume']
 
@@ -130,7 +131,7 @@ class coinbase(object):
         data = json.loads(ret.text)
 
         price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'], price['volume'] = \
-            data['last'], data['last'], data['last'], 'USD', data['high'], data['low'], data['volume']
+            round(float(data['last']), 2), data['last'], data['last'], 'USD', data['high'], data['low'], data['volume']
 
 
         return price
@@ -144,7 +145,7 @@ def show_data():
     dict_data = {'bittrex': bittrex().price_data(),
                  'ZebPay': zebpay().price_data(),
                  'c_cex': c_cex().price_data(),
-                 'Poloniex': poloniex().price_data(),
+                 # 'Poloniex': poloniex().price_data(),
                  'bitpay': bitpay().price_data(),
                  'coinbase': coinbase().price_data()
                  }
