@@ -20,11 +20,11 @@
         <table>
             <tr>
                 <th>Exchanges</th>
-                <th>Buy Price</th>
-                <th>Sell Price</th>
-                <th>Price</th>
-                <th>High</th>
-                <th>Low</th>
+                <th>Buy Price($)</th>
+                <th>Sell Price($)</th>
+                <th>Price($)</th>
+                <th>High($)</th>
+                <th>Low($)</th>
                 <th>Volume</th>
             </tr>
             <tr>
@@ -68,6 +68,9 @@
                 <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
                 <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
                 <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                <td>{{bitpay.high | floatformat:3|intcomma}}</td>
+                <td>{{bitpay.low | floatformat:3|intcomma}}</td>
+                <td>{{bitpay.volume | floatformat:3|intcomma}}</td>
             </tr>
             <tr>
                 <th>CoinBase</th>
