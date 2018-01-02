@@ -4,87 +4,126 @@
 {% block content %}
 
 <header class="cd-header">
-  <h2>Exchange Data</h2>
-   <style>
+    <h2>Exchange Data</h2>
+    <style>
        table, th, td {
-    border: 2px solid black;
-    width: 800px;
-    height: 50px;
-}
-   </style>
+            border: 2px solid black;
+            width: 800px;
+            height: 50px;
+               }
+
+       .container {
+            background-color: #f1f1f1;
+            }
+       .center {
+            margin: auto;
+            width: 100%;
+            border: 1px solid green;
+            padding: 10px;
+            text-align: center;
+            }
+       <!--.tablediv{-->
+
+            <!--text-align: center;-->
+       <!--}-->
+    </style>
 </header>
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-3">
-        <table>
-            <tr>
-                <th>Exchanges</th>
-                <th>Buy Price($)</th>
-                <th>Sell Price($)</th>
-                <th>Price($)</th>
-                <th>High($)</th>
-                <th>Low($)</th>
-                <th>Volume</th>
-            </tr>
-            <tr>
-                <th>Bittrex</th>
-                <td>{{bittrex.buy | floatformat:3|intcomma}}</td>
-                <td>{{bittrex.sell | floatformat:3|intcomma}}</td>
-                <td>{{bittrex.spot | floatformat:3|intcomma}}</td>
-                <td>{{bittrex.high | floatformat:3|intcomma}}</td>
-                <td>{{bittrex.low | floatformat:3|intcomma}}</td>
-                <td>{{bittrex.volume | floatformat:3|intcomma}}</td>
-            </tr>
-            <tr>
-                <th>Zebpay</th>
-                <td>{{ZebPay.buy | floatformat:3|intcomma}}</td>
-                <td>{{ZebPay.sell | floatformat:3|intcomma}}</td>
-                <td>{{ZebPay.spot | floatformat:3|intcomma}}</td>
-                <td>{{ZebPay.high | floatformat:3|intcomma}}</td>
-                <td>{{ZebPay.low | floatformat:3|intcomma}}</td>
-                <td>{{ZebPay.volume | floatformat:3|intcomma}}</td>
-            </tr>
-            <tr>
-                <th>Poloniex</th>
-                <td>{{Poloniex.buy | floatformat:3|intcomma}}</td>
-                <td>{{Poloniex.sell | floatformat:3|intcomma}}</td>
-                <td>{{Poloniex.spot | floatformat:3|intcomma}}</td>
-                <td>{{Poloniex.high | floatformat:3|intcomma}}</td>
-                <td>{{Poloniex.low | floatformat:3|intcomma}}</td>
-                <td>{{Poloniex.volume | floatformat:3|intcomma}}</td>
-            </tr>
-            <tr>
-                <th>C_Cex</th>
-                <td>{{c_cex.buy | floatformat:3|intcomma}}</td>
-                <td>{{c_cex.sell | floatformat:3|intcomma}}</td>
-                <td>{{c_cex.spot | floatformat:3|intcomma}}</td>
-                <td>{{c_cex.high | floatformat:3|intcomma}}</td>
-                <td>{{c_cex.low | floatformat:3|intcomma}}</td>
-                <td>{{c_cex.volume | floatformat:3|intcomma}}</td>
-            </tr>
-            <tr>
-                <th>BitPay</th>
-                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
-                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
-                <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
-                <td>{{bitpay.high | floatformat:3|intcomma}}</td>
-                <td>{{bitpay.low | floatformat:3|intcomma}}</td>
-                <td>{{bitpay.volume | floatformat:3|intcomma}}</td>
-            </tr>
-            <tr>
-                <th>CoinBase</th>
-                <td>{{coinbase.buy | floatformat:3|intcomma}}</td>
-                <td>{{coinbase.sell | floatformat:3|intcomma}}</td>
-                <td>{{coinbase.spot | floatformat:3|intcomma}}</td>
-                <td>{{coinbase.high | floatformat:3|intcomma}}</td>
-                <td>{{coinbase.low | floatformat:3|intcomma}}</td>
-                <td>{{coinbase.volume | floatformat:3|intcomma}}</td>
-            </tr>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <div class="tablediv">
+                <table>
+                    <tr>
+                        <th>Exchanges</th>
+                        <th>Buy Price($)</th>
+                        <th>Sell Price($)</th>
+                        <th>Price($)</th>
+                        <th>High($)</th>
+                        <th>Low($)</th>
+                        <th>Volume</th>
+                    </tr>
+                    <tr>
+                        <th>Bittrex</th>
+                        <td>{{bittrex.buy | floatformat:3|intcomma}}</td>
+                        <td>{{bittrex.sell | floatformat:3|intcomma}}</td>
+                        <td>{{bittrex.spot | floatformat:3|intcomma}}</td>
+                        <td>{{bittrex.high | floatformat:3|intcomma}}</td>
+                        <td>{{bittrex.low | floatformat:3|intcomma}}</td>
+                        <td>{{bittrex.volume | floatformat:3|intcomma}}</td>
+                    </tr>
+                    <tr>
+                        <th>Zebpay</th>
+                        <td>{{ZebPay.buy | floatformat:3|intcomma}}</td>
+                        <td>{{ZebPay.sell | floatformat:3|intcomma}}</td>
+                        <td>{{ZebPay.spot | floatformat:3|intcomma}}</td>
+                        <td>{{ZebPay.high | floatformat:3|intcomma}}</td>
+                        <td>{{ZebPay.low | floatformat:3|intcomma}}</td>
+                        <td>{{ZebPay.volume | floatformat:3|intcomma}}</td>
+                    </tr>
+                    <tr>
+                        <th>Poloniex</th>
+                        <td>{{Poloniex.buy | floatformat:3|intcomma}}</td>
+                        <td>{{Poloniex.sell | floatformat:3|intcomma}}</td>
+                        <td>{{Poloniex.spot | floatformat:3|intcomma}}</td>
+                        <td>{{Poloniex.high | floatformat:3|intcomma}}</td>
+                        <td>{{Poloniex.low | floatformat:3|intcomma}}</td>
+                        <td>{{Poloniex.volume | floatformat:3|intcomma}}</td>
+                    </tr>
+                    <tr>
+                        <th>C_Cex</th>
+                        <td>{{c_cex.buy | floatformat:3|intcomma}}</td>
+                        <td>{{c_cex.sell | floatformat:3|intcomma}}</td>
+                        <td>{{c_cex.spot | floatformat:3|intcomma}}</td>
+                        <td>{{c_cex.high | floatformat:3|intcomma}}</td>
+                        <td>{{c_cex.low | floatformat:3|intcomma}}</td>
+                        <td>{{c_cex.volume | floatformat:3|intcomma}}</td>
+                    </tr>
+                    <tr>
+                        <th>BitPay</th>
+                        <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                        <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                        <td>{{bitpay.spot | floatformat:3|intcomma}}</td>
+                        <td>{{bitpay.high | floatformat:3|intcomma}}</td>
+                        <td>{{bitpay.low | floatformat:3|intcomma}}</td>
+                        <td>{{bitpay.volume | floatformat:3|intcomma}}</td>
+                    </tr>
+                    <tr>
+                        <th>CoinBase</th>
+                        <td>{{coinbase.buy | floatformat:3|intcomma}}</td>
+                        <td>{{coinbase.sell | floatformat:3|intcomma}}</td>
+                        <td>{{coinbase.spot | floatformat:3|intcomma}}</td>
+                        <td>{{coinbase.high | floatformat:3|intcomma}}</td>
+                        <td>{{coinbase.low | floatformat:3|intcomma}}</td>
+                        <td>{{coinbase.volume | floatformat:3|intcomma}}</td>
+                    </tr>
 
-        </table>
+                </table>
+            </div>
+            <div class="center">
+
+                <form action="/action_page.php">
+                    <br><br>
+                    Exchange :
+                    <select name="exchange">
+
+                        <option value="bittrex">Bittrex</option>
+                        <option value="zebpay">ZebPay</option>
+                        <option value="poloniex">Poloniex</option>
+                        <option value="c_cex">C_Cex</option>
+                        <option value="bitpay">BitPay</option>
+                        <option value="coinbase">CoinBase</option>
+                    </select><br><br>Order Type :<br>
+                    <input type="radio" name="order" value="buy"> Buy
+                    <input type="radio" name="order" value="sell"> Sell<br>
+                    <br>Price :
+                    <input type="number" name="price">
+                    <br><br>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
