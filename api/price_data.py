@@ -126,16 +126,13 @@ class coinbase(object):
     def price_data(self):
         price = {}
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/spot')
-        price['spot'] = json.loads(ret.text)['data']['amount']
+        ret = requests.get('https://api.gdax.com/products/BTC-usd/stats')
+        data = json.loads(ret.text)
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/buy')
-        price['buy'] = json.loads(ret.text)['data']['amount']
+        price['buy'], price['sell'], price['spot'], price['currency'], price['high'], price['low'], price['volume'] = \
+            data['last'], data['last'], data['last'], 'USD', data['high'], data['low'], data['volume']
 
-        ret = requests.get('https://api.coinbase.com/v2/prices/BTC-USD/sell')
-        price['sell'] = json.loads(ret.text)['data']['amount']
 
-        price['currency'] = 'USD'
         return price
 
         # def buy_order(self):
